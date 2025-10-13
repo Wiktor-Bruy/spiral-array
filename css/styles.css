@@ -1,5 +1,6 @@
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: #13fc03;
 }
 h1,
 h2,
@@ -14,5 +15,82 @@ p {
 ul {
   list-style: none;
 }
+button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: blue;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 20px;
+}
+.top-line {
+  padding: 25px;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: center;
+}
+.site-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 0 auto;
+}
+.site-title::before,
+.site-title::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 50px;
+  background-color: black;
+}
+.container {
+  max-width: 1100px;
+  min-height: 600px;
+  margin: 0 auto;
+  background-color: white;
+}
 
-/*---------------------------------------------First-page---------------------------------------*/
+/*---------------------------------------------Start-page---------------------------------------*/
+.title {
+  text-align: center;
+  padding: 50px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 50px;
+}
+.text {
+  padding: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 80px;
+}
+.start-btn {
+  margin: 0 auto;
+  width: 200px;
+  height: 80px;
+  transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+.start-btn:hover,
+.start-btn:focus {
+  background-color: darkblue;
+  transform: scale(0.9);
+}
+.start.invis {
+  display: none;
+}
+
+/*---------------------------------------------Options-page---------------------------------------*/
+.options {
+  display: none;
+}
+.options.vis {
+  display: block;
+}
