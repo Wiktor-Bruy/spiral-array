@@ -26,6 +26,12 @@ button {
   border-radius: 8px;
   font-weight: 500;
   font-size: 20px;
+  transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+button:hover,
+button:focus {
+  background-color: darkblue;
+  transform: scale(0.9);
 }
 .top-line {
   padding: 25px;
@@ -54,6 +60,8 @@ button {
   min-height: 600px;
   margin: 0 auto;
   background-color: white;
+  border: 2px solid #8c7023;
+  border-radius: 10px;
 }
 
 /*---------------------------------------------Start-page---------------------------------------*/
@@ -76,12 +84,6 @@ button {
   margin: 0 auto;
   width: 200px;
   height: 80px;
-  transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
-}
-.start-btn:hover,
-.start-btn:focus {
-  background-color: darkblue;
-  transform: scale(0.9);
 }
 .start.invis {
   display: none;
@@ -93,4 +95,158 @@ button {
 }
 .options.vis {
   display: block;
+}
+.inp-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.inp-size {
+  outline: none;
+  padding: 8px 16px;
+  width: 300px;
+  height: 50px;
+  border-radius: 6px;
+  text-align: center;
+  border-color: #382e13;
+  transition: border-color 250ms ease-in-out;
+}
+.inp-size:hover,
+.inp-size:focus {
+  border-color: blue;
+}
+.radio-btn {
+  padding: 15px 10px 0 10px;
+  border-color: #382e13;
+  height: 80px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.form-btn {
+  width: 170px;
+  height: 50px;
+}
+
+/*---------------------------------------------Array-page---------------------------------------*/
+.array-page {
+  display: none;
+}
+.array-page.vis {
+  display: block;
+}
+.array {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.array-item {
+  border: 1px solid black;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.finish-btn {
+  width: 150px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+/*----------------------------------------Window-error-message---------------------------*/
+.error-enter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(43, 42, 40, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+}
+.error-enter.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.error-img {
+  width: auto;
+  height: 550px;
+  background-color: transparent;
+}
+.message-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.error-message {
+  padding: 15px;
+  background-color: aliceblue;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: justify;
+  line-height: 1.2;
+  max-width: 300px;
+  border-radius: 6px;
+}
+.error-btn {
+  background-color: #eda515;
+  width: 90px;
+  height: 60px;
+}
+
+/*----------------------------------------Window-try-again-message---------------------------*/
+.try-again {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 42, 40, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+}
+.try-again.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.try-img {
+  width: auto;
+  height: 600px;
+}
+.try-text {
+  position: absolute;
+  top: 58%;
+  max-width: 150px;
+}
+.try-yes,
+.try-no {
+  width: 100px;
+  height: 50px;
+  background-color: #eda515;
 }

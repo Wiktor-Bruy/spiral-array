@@ -39,8 +39,63 @@
         <h2 class="title">
           Введіть розмір масиву від 1 до 25, та оберіть напрямок заповнення.
         </h2>
+        <form class="inp-form">
+          <input
+            type="number"
+            class="inp-size"
+            name="size"
+            placeholder="Введіть розмір"
+          />
+          <fieldset class="radio-btn">
+            <legend>Напрямок заповнення</legend>
+            <label>
+              <input type="radio" name="direct" value="right" checked />
+              За годинниковою стрілкою
+            </label>
+            <label>
+              <input type="radio" name="direct" value="left" />
+              Проти годинникової стрілки
+            </label>
+          </fieldset>
+          <button class="form-btn" type="submit">Створити</button>
+        </form>
       </div>
     </section>
+
+    <section class="array-page">
+      <div class="container">
+        <h2 class="title">Ваш масив</h2>
+        <ul class="array"></ul>
+        <button class="finish-btn" type="button">Finish</button>
+      </div>
+    </section>
+
+    <div class="error-enter">
+      <div class="message-box">
+        <p class="error-message">
+          Введений розмір не відповідає нормі. Введіть корректне значення.
+        </p>
+        <button class="error-btn" type="button">Ok</button>
+      </div>
+      <img
+        class="error-img"
+        src="./img/error-img.png"
+        alt="error value"
+        width="1473"
+      />
+    </div>
+
+    <div class="try-again">
+      <button class="try-yes" type="button">Так</button>
+      <img
+        class="try-img"
+        src="./img/try-again-img.png"
+        alt="try again"
+        width="690"
+      />
+      <button class="try-no" type="button">Ні</button>
+      <p class="try-text">Хочете спробувати знову?</p>
+    </div>
 
     <script src="./js/script.js" type="module"></script>
   </body>
