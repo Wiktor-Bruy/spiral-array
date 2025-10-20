@@ -52,6 +52,8 @@ function formSubmit(event) {
     if (!arrayPage.classList.contains('vis')) {
       arrayPage.classList.add('vis');
     }
+    const finishBtn = document.querySelector('.finish-btn');
+    finishBtn.setAttribute('disabled', '');
     addArray();
   }
 }
@@ -97,32 +99,54 @@ function createArray() {
     let countY = 0;
     let countN = 1;
     while (countN <= size * size) {
-      while (countX <= countSizeX) {
-        array[countY][countX] = countN;
-        countX++;
+      for (let i = countX; i <= countSizeX; i++) {
+        array[countY][i] = countN;
         countN++;
       }
-      countX--;
       countY++;
-      while (countY <= countSizeY) {
-        array[countY][countX] = countN;
-        countY++;
+      for (let i = countY; i <= countSizeY; i++) {
+        array[i][countSizeX] = countN;
         countN++;
       }
-      countY--;
-      countX--;
-      while (countX >= 0) {
-        array[countY][countX] = countN;
+      countSizeX--;
+      for (let i = countSizeX; i >= countX; i--) {
+        array[countSizeY][i] = countN;
         countN++;
-        countX--;
+      }
+      countSizeY--;
+      for (let i = countSizeY; i >= countY; i--) {
+        array[i][countX] = countN;
+        countN++;
       }
       countX++;
-      countY--;
-      while (countY >= 0) {
-        array[countY][countX] = countN;
+    }
+  } else if (direct === 'left') {
+    let countSizeX = size - 1;
+    let countSizeY = size - 1;
+    let countX = 0;
+    let countY = 0;
+    let countN = 1;
+    while (countN <= size * size) {
+      for (let i = countSizeX; i >= countX; i--) {
+        array[countY][i] = countN;
         countN++;
-        countY--;
       }
+      countY++;
+      for (let i = countY; i <= countSizeY; i++) {
+        array[i][countX] = countN;
+        countN++;
+      }
+      countX++;
+      for (let i = countX; i <= countSizeX; i++) {
+        array[countSizeY][i] = countN;
+        countN++;
+      }
+      countSizeY--;
+      for (let i = countSizeY; i >= countY; i--) {
+        array[i][countSizeX] = countN;
+        countN++;
+      }
+      countSizeX--;
     }
   }
   return array;
@@ -136,13 +160,45 @@ function addArray() {
     const item = document.createElement('li');
     item.classList.add('array-item');
     item.textContent = '1';
+    item.style.width = '50px';
+    item.style.height = '50px';
+    item.style.fontSize = '24px';
     item.style.backgroundColor = getRandomHexColor();
     item.style.visibility = 'hidden';
     array.append(item);
     delay(item, 350);
+    setTimeout(() => {
+      const finishBtn = document.querySelector('.finish-btn');
+      finishBtn.removeAttribute('disabled');
+    }, 350);
   } else {
     const arr = createArray();
-    console.log(arr);
+    let myArr = [];
+    const sizeItem = (990 - 5 * (size - 1)) / size;
+    const fontSize = sizeItem * 0.4;
+    for (let subArr of arr) {
+      for (let i of subArr) {
+        const item = document.createElement('li');
+        item.classList.add('array-item');
+        item.textContent = i;
+        item.style.backgroundColor = getRandomHexColor();
+        item.style.width = `${sizeItem}px`;
+        item.style.height = `${sizeItem}px`;
+        item.style.fontSize = `${fontSize}px`;
+        item.style.visibility = 'hidden';
+        myArr.push(item);
+      }
+    }
+    array.append(...myArr);
+    for (let elem of myArr) {
+      const time = Number(elem.textContent) * 250;
+      delay(elem, time);
+    }
+    const delayBtn = size * size * 250;
+    setTimeout(() => {
+      const finishBtn = document.querySelector('.finish-btn');
+      finishBtn.removeAttribute('disabled');
+    }, delayBtn);
   }
 }
 

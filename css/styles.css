@@ -58,6 +58,7 @@ button:focus {
   background-color: black;
 }
 .container {
+  padding-bottom: 30px;
   max-width: 1100px;
   min-height: 600px;
   margin: 0 auto;
@@ -67,6 +68,9 @@ button:focus {
 }
 
 /*---------------------------------------------Start-page---------------------------------------*/
+section {
+  padding-bottom: 80px;
+}
 .title {
   text-align: center;
   padding: 50px;
@@ -138,6 +142,10 @@ button:focus {
 .array-page {
   display: none;
 }
+.array-page .container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
 .array-page.vis {
   display: block;
 }
@@ -150,10 +158,9 @@ button:focus {
   margin-bottom: 20px;
 }
 .array-item {
-  min-width: 35px;
-  min-height: 35px;
+  font-weight: 600;
   border: 2px solid black;
-  border-radius: 4px;
+  border-radius: 8%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,6 +170,9 @@ button:focus {
   width: 150px;
   height: 60px;
   margin: 0 auto;
+}
+.finish-btn:disabled {
+  background-color: cadetblue;
 }
 
 /*----------------------------------------Window-error-message---------------------------*/
