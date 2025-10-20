@@ -5,6 +5,13 @@ let direct;
 
 // Функції--------------------------------------------------------------------------
 
+//--------------------------------------------------------Функція-рандомного-кольору
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
+
 //----------------------------------------------------Відкриття-сторінки-вводу-даних
 function startOptions() {
   const startWWind = document.querySelector('.start');
@@ -69,19 +76,73 @@ function tryNo() {
   startWWind.classList.remove('invis');
 }
 
+//-------------------------------------------------------Функція-затримки-відображення
+function delay(item, count) {
+  setTimeout(() => {
+    item.style.visibility = 'visible';
+  }, count);
+}
+
 //------------------------------------------------------------Функція-створення-масиву
-function createArray() {}
+function createArray() {
+  let array = [];
+  for (let i = 0; i < size; i++) {
+    array.push([]);
+  }
+
+  if (direct === 'right') {
+    let countSizeX = size - 1;
+    let countSizeY = size - 1;
+    let countX = 0;
+    let countY = 0;
+    let countN = 1;
+    while (countN <= size * size) {
+      while (countX <= countSizeX) {
+        array[countY][countX] = countN;
+        countX++;
+        countN++;
+      }
+      countX--;
+      countY++;
+      while (countY <= countSizeY) {
+        array[countY][countX] = countN;
+        countY++;
+        countN++;
+      }
+      countY--;
+      countX--;
+      while (countX >= 0) {
+        array[countY][countX] = countN;
+        countN++;
+        countX--;
+      }
+      countX++;
+      countY--;
+      while (countY >= 0) {
+        array[countY][countX] = countN;
+        countN++;
+        countY--;
+      }
+    }
+  }
+  return array;
+}
 
 //------------------------------------------------------------Функція-додавання-масиву
 function addArray() {
-  if (size === 1) {
+  const array = document.querySelector('.array');
+  array.innerHTML = '';
+  if (size == 1) {
     const item = document.createElement('li');
-    item.classList.add('.array-item');
-    const text = document.createElement('span');
-    text.textContent = 1;
-    item.append(text);
-    const array = document.querySelector('.array');
+    item.classList.add('array-item');
+    item.textContent = '1';
+    item.style.backgroundColor = getRandomHexColor();
+    item.style.visibility = 'hidden';
     array.append(item);
+    delay(item, 350);
+  } else {
+    const arr = createArray();
+    console.log(arr);
   }
 }
 
