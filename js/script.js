@@ -171,6 +171,35 @@ function addArray() {
       const finishBtn = document.querySelector('.finish-btn');
       finishBtn.removeAttribute('disabled');
     }, 350);
+  } else if (size <= 10 && size > 1) {
+    const arr = createArray();
+    let myArr = [];
+    for (let subArr of arr) {
+      for (let i of subArr) {
+        const item = document.createElement('li');
+        item.classList.add('array-item');
+        item.textContent = i;
+        item.style.backgroundColor = getRandomHexColor();
+        item.style.width = `50px`;
+        item.style.height = `50px`;
+        item.style.fontSize = `22px`;
+        item.style.visibility = 'hidden';
+        myArr.push(item);
+      }
+    }
+    const padding = (1000 - (size * 50 + 5 * (size - 1) + 5)) / 2;
+    array.style.paddingLeft = `${padding}px`;
+    array.style.paddingRight = `${padding}px`;
+    array.append(...myArr);
+    for (let elem of myArr) {
+      const time = Number(elem.textContent) * 250;
+      delay(elem, time);
+    }
+    const delayBtn = size * size * 250;
+    setTimeout(() => {
+      const finishBtn = document.querySelector('.finish-btn');
+      finishBtn.removeAttribute('disabled');
+    }, delayBtn);
   } else {
     const arr = createArray();
     let myArr = [];
@@ -189,12 +218,14 @@ function addArray() {
         myArr.push(item);
       }
     }
+    array.style.paddingLeft = '0px';
+    array.style.paddingRight = '0px';
     array.append(...myArr);
     for (let elem of myArr) {
-      const time = Number(elem.textContent) * 250;
+      const time = Number(elem.textContent) * 100;
       delay(elem, time);
     }
-    const delayBtn = size * size * 250;
+    const delayBtn = size * size * 100;
     setTimeout(() => {
       const finishBtn = document.querySelector('.finish-btn');
       finishBtn.removeAttribute('disabled');
